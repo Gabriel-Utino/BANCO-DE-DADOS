@@ -1,1 +1,22 @@
 
+ALTER procedure getResultado (@idAluno int)
+as begin
+	declare @media decimal
+	declare @resultado varchar(50)='aprovado'
+
+	set @media = (select (n1+n2)/2 from nota where idaluno = @idAluno)
+
+	if @media <6 SET @resultado='reprovado'
+
+
+	select RESULTADO=@RESULTADO
+end
+
+
+
+
+select * from nota
+exec getResultado 1
+exec getResultado 2
+exec getResultado 3
+exec getResultado 4
